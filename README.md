@@ -1,29 +1,29 @@
-# Drone vs Bird Sınıflandırma — Özel CNN
+# Drone vs Bird Sınıflandırma — Custom CNN
 
-Hava görüntülerinde **drone** ile **kuş** ayrımı yapan ikili görüntü sınıflandırma projesi. Model **sıfırdan tasarlanmış bir CNN** kullanır (transfer learning omurgası yok).
+Hava görüntülerinde **drone** ile **kuş** ayrımı yapan ikili sınıflandırma projesi. Model **sıfırdan** tasarlanmış bir **Custom CNN** kullanır (transfer learning backbone yok).
 
-**Veri seti:** Kaggle [Drone vs Bird](https://www.kaggle.com/datasets/muhammadsaoodsarwar/drone-vs-bird)
+**Veri seti:** [Drone vs Bird](https://www.kaggle.com/datasets/muhammadsaoodsarwar/drone-vs-bird) (Kaggle).
 
 ## Öne çıkanlar
 
 | Madde | Detay |
 |------|--------|
-| Model | Özel CNN (4 konvolüsyon bloğu: 32→64→128→256) |
-| Giriş boyutu | 128×128×3 |
+| Model | Custom CNN (4 conv block: 32→64→128→256) |
+| Input size | 128×128×3 |
 | Sınıflar | Bird, Drone |
-| Mimari | Conv2D → BatchNorm → ReLU (×2) → MaxPool → Dropout; GAP + Dense; sigmoid çıkış |
-| Parametre | ~1,28M toplam |
+| Mimari | Conv2D → BatchNorm → ReLU (×2) → MaxPool → Dropout; GAP + Dense; sigmoid çıktı |
+| Parametre | ~1.28M toplam |
 
-## Sonuçlar (test seti)
+## Sonuçlar (test set)
 
 | Metrik | Skor |
 |--------|------:|
-| Accuracy | **95,26%** |
-| Precision | 95,25% |
-| Recall | 95,26% |
-| F1-Score | **95,25%** |
+| Accuracy | **95.26%** |
+| Precision | 95.25% |
+| Recall | 95.26% |
+| F1-Score | **95.25%** |
 
-Eğitim 42 epoch sürdü; early stopping ve en iyi ağırlıkların kaydı kullanıldı.
+Eğitim 42 epoch sürdü; early stopping / best-weights checkpoint kullanıldı.
 
 ## Kullanılan teknolojiler
 
@@ -35,15 +35,15 @@ Eğitim 42 epoch sürdü; early stopping ve en iyi ağırlıkların kaydı kulla
 
 ## Nasıl çalıştırılır?
 
-1. [`BIM430_DroneVsBird_CustomCNN.ipynb`](BIM430_DroneVsBird_CustomCNN.ipynb) dosyasını [Google Colab](https://colab.research.google.com) veya Jupyter’da açın.
+1. [`BIM430_DroneVsBird_CustomCNN.ipynb`](BIM430_DroneVsBird_CustomCNN.ipynb) dosyasını [Google Colab](https://colab.research.google.com) veya Jupyter’da aç.
 2. Runtime → Change runtime type → **GPU**.
-3. Hücreleri sırayla çalıştırın.
+3. Hücreleri sırayla çalıştır.
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Notebook, Kaggle veri setini çalışma sırasında indirir. Büyük model ağırlıkları ve ham görüntüler gitignore ile repoya alınmaz.
+Notebook, Kaggle veri setini çalışma sırasında indirir. Ağırlık dosyaları ve ham görüntüler `.gitignore` ile dışarıda bırakılmıştır.
 
 ## Proje yapısı
 
@@ -57,4 +57,4 @@ drone-vs-bird/
 
 ## Lisans
 
-Eğitim / portföy amaçlı proje (BIM 430 tarzı ders çalışması). Veri seti lisansı Kaggle kaynak sayfasındaki koşullara tabidir.
+Eğitim / portfolio amaçlı proje. Veri seti lisansı Kaggle kaynak sayfasındaki koşullara tabidir.
