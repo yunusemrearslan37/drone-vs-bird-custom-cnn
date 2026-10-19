@@ -1,51 +1,51 @@
-# Drone vs Bird Classification — Custom CNN
+# Drone vs Bird Sınıflandırma — Özel CNN
 
-Binary image classification that distinguishes **drones** from **birds** in aerial imagery, using a **from-scratch CNN** (no transfer learning backbone).
+Hava görüntülerinde **drone** ile **kuş** ayrımı yapan ikili görüntü sınıflandırma projesi. Model **sıfırdan tasarlanmış bir CNN** kullanır (transfer learning omurgası yok).
 
-**Dataset:** [Drone vs Bird](https://www.kaggle.com/datasets/muhammadsaoodsarwar/drone-vs-bird) on Kaggle.
+**Veri seti:** Kaggle [Drone vs Bird](https://www.kaggle.com/datasets/muhammadsaoodsarwar/drone-vs-bird)
 
-## Highlights
+## Öne çıkanlar
 
-| Item | Detail |
+| Madde | Detay |
 |------|--------|
-| Model | Custom CNN (4 conv blocks: 32→64→128→256) |
-| Input size | 128×128×3 |
-| Classes | Bird, Drone |
-| Design | Conv2D → BatchNorm → ReLU (×2) → MaxPool → Dropout; GAP + Dense; sigmoid output |
-| Parameters | ~1.28M total |
+| Model | Özel CNN (4 konvolüsyon bloğu: 32→64→128→256) |
+| Giriş boyutu | 128×128×3 |
+| Sınıflar | Bird, Drone |
+| Mimari | Conv2D → BatchNorm → ReLU (×2) → MaxPool → Dropout; GAP + Dense; sigmoid çıkış |
+| Parametre | ~1,28M toplam |
 
-## Results (test set)
+## Sonuçlar (test seti)
 
-| Metric | Score |
+| Metrik | Skor |
 |--------|------:|
-| Accuracy | **95.26%** |
-| Precision | 95.25% |
-| Recall | 95.26% |
-| F1-Score | **95.25%** |
+| Accuracy | **95,26%** |
+| Precision | 95,25% |
+| Recall | 95,26% |
+| F1-Score | **95,25%** |
 
-Trained for 42 epochs with early stopping / best-weights checkpointing.
+Eğitim 42 epoch sürdü; early stopping ve en iyi ağırlıkların kaydı kullanıldı.
 
-## Tech stack
+## Kullanılan teknolojiler
 
 - Python, TensorFlow / Keras
 - scikit-learn (classification report, confusion matrix)
 - Matplotlib / Seaborn
 - kagglehub
-- Google Colab (GPU recommended)
+- Google Colab (GPU önerilir)
 
-## How to run
+## Nasıl çalıştırılır?
 
-1. Open [`BIM430_DroneVsBird_CustomCNN.ipynb`](BIM430_DroneVsBird_CustomCNN.ipynb) in [Google Colab](https://colab.research.google.com) or Jupyter.
+1. [`BIM430_DroneVsBird_CustomCNN.ipynb`](BIM430_DroneVsBird_CustomCNN.ipynb) dosyasını [Google Colab](https://colab.research.google.com) veya Jupyter’da açın.
 2. Runtime → Change runtime type → **GPU**.
-3. Run all cells in order.
+3. Hücreleri sırayla çalıştırın.
 
 ```bash
 pip install -r requirements.txt
 ```
 
-The notebook downloads the Kaggle dataset at runtime. Large weights and raw images are gitignored.
+Notebook, Kaggle veri setini çalışma sırasında indirir. Büyük model ağırlıkları ve ham görüntüler gitignore ile repoya alınmaz.
 
-## Project structure
+## Proje yapısı
 
 ```text
 drone-vs-bird/
@@ -55,6 +55,6 @@ drone-vs-bird/
 └── BIM430_DroneVsBird_CustomCNN.ipynb
 ```
 
-## License
+## Lisans
 
-Educational / portfolio project (BIM 430 style coursework). Dataset license follows the Kaggle source page.
+Eğitim / portföy amaçlı proje (BIM 430 tarzı ders çalışması). Veri seti lisansı Kaggle kaynak sayfasındaki koşullara tabidir.
