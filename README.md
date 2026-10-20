@@ -1,8 +1,8 @@
 # Drone vs Bird Sınıflandırma — Custom CNN
 
-Hava görüntülerinde **drone** ile **kuş** ayrımı yapan ikili sınıflandırma projesi. Model **sıfırdan** tasarlanmış bir **Custom CNN** kullanır (transfer learning backbone yok).
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yunusemrearslan37/drone-vs-bird-custom-cnn/blob/main/BIM430_DroneVsBird_CustomCNN.ipynb)
 
-**Veri seti:** [Drone vs Bird](https://www.kaggle.com/datasets/muhammadsaoodsarwar/drone-vs-bird) (Kaggle).
+Hava görüntülerinde **drone** ile **kuş** ayrımı yapan ikili sınıflandırma projesi. Model **sıfırdan** tasarlanmış bir **Custom CNN** kullanır (transfer learning backbone yok).
 
 ## Öne çıkanlar
 
@@ -12,7 +12,16 @@ Hava görüntülerinde **drone** ile **kuş** ayrımı yapan ikili sınıflandı
 | Input size | 128×128×3 |
 | Sınıflar | Bird, Drone |
 | Mimari | Conv2D → BatchNorm → ReLU (×2) → MaxPool → Dropout; GAP + Dense; sigmoid çıktı |
-| Parametre | ~1.28M toplam |
+| Parametre | ~1.28M toplam (1.276.449) |
+
+## Veri seti
+
+- **Kaynak:** [Drone vs Bird (Kaggle)](https://www.kaggle.com/datasets/muhammadsaoodsarwar/drone-vs-bird)
+- **Toplam:** 4.106 görsel — bird: 1.607, drone: 2.499
+- **Split:** Train 2.789 · Validation 493 · Test 822
+- **Data augmentation:** rotation (±20°), width/height shift, shear, zoom, horizontal flip
+
+![Class distribution](images/class_distribution.png)
 
 ## Sonuçlar (test set)
 
@@ -25,6 +34,10 @@ Hava görüntülerinde **drone** ile **kuş** ayrımı yapan ikili sınıflandı
 
 Eğitim 42 epoch sürdü; early stopping / best-weights checkpoint kullanıldı.
 
+### Örnek tahminler (test seti)
+
+![Sample predictions](images/sample_predictions.png)
+
 ## Kullanılan teknolojiler
 
 - Python, TensorFlow / Keras
@@ -35,7 +48,7 @@ Eğitim 42 epoch sürdü; early stopping / best-weights checkpoint kullanıldı.
 
 ## Nasıl çalıştırılır?
 
-1. [`BIM430_DroneVsBird_CustomCNN.ipynb`](BIM430_DroneVsBird_CustomCNN.ipynb) dosyasını [Google Colab](https://colab.research.google.com) veya Jupyter’da aç.
+1. [`BIM430_DroneVsBird_CustomCNN.ipynb`](BIM430_DroneVsBird_CustomCNN.ipynb) dosyasını [Google Colab](https://colab.research.google.com) veya Jupyter'da aç (yukarıdaki Colab rozetine tıklaman yeterli).
 2. Runtime → Change runtime type → **GPU**.
 3. Hücreleri sırayla çalıştır.
 
@@ -48,11 +61,14 @@ Notebook, Kaggle veri setini çalışma sırasında indirir. Ağırlık dosyalar
 ## Proje yapısı
 
 ```text
-drone-vs-bird/
+drone-vs-bird-custom-cnn/
 ├── README.md
 ├── requirements.txt
 ├── .gitignore
-└── BIM430_DroneVsBird_CustomCNN.ipynb
+├── BIM430_DroneVsBird_CustomCNN.ipynb
+└── images/
+    ├── class_distribution.png
+    └── sample_predictions.png
 ```
 
 ## Lisans
