@@ -10,6 +10,8 @@ kaggle.json
 *.pt
 *.pth
 data/
+split_data/
+model_architecture.png
 confusion_matrix.png
 confusion_matrix_normalized.png
 .DS_Store

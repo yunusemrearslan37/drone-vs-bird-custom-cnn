@@ -18,7 +18,7 @@ Hava görüntülerinde **drone** ile **kuş** ayrımı yapan ikili sınıflandı
 
 - **Kaynak:** [Drone vs Bird (Kaggle)](https://www.kaggle.com/datasets/muhammadsaoodsarwar/drone-vs-bird)
 - **Toplam:** 4.106 görsel — bird: 1.607, drone: 2.499
-- **Split:** Train 2.789 · Validation 493 · Test 822
+- **Split:** Train 2.791 · Validation 493 · Test 822 (generator eğitimde 2.789 görsel okudu)
 - **Data augmentation:** rotation (±20°), width/height shift, shear, zoom, horizontal flip
 
 ![Class distribution](images/class_distribution.png)
@@ -32,7 +32,7 @@ Hava görüntülerinde **drone** ile **kuş** ayrımı yapan ikili sınıflandı
 | Recall | 95.26% |
 | F1-Score | **95.25%** |
 
-Eğitim 42 epoch sürdü; early stopping / best-weights checkpoint kullanıldı.
+Eğitim 50 epoch planlandı; early stopping ile 42. epochta durdu, best-weights checkpoint kullanıldı.
 
 ### Örnek tahminler (test seti)
 
@@ -48,9 +48,11 @@ Eğitim 42 epoch sürdü; early stopping / best-weights checkpoint kullanıldı.
 
 ## Nasıl çalıştırılır?
 
-1. [`BIM430_DroneVsBird_CustomCNN.ipynb`](BIM430_DroneVsBird_CustomCNN.ipynb) dosyasını [Google Colab](https://colab.research.google.com) veya Jupyter'da aç (yukarıdaki Colab rozetine tıklaman yeterli).
+1. [`BIM430_DroneVsBird_CustomCNN.ipynb`](BIM430_DroneVsBird_CustomCNN.ipynb) dosyasını [Google Colab](https://colab.research.google.com)'da aç (yukarıdaki Colab rozetine tıklaman yeterli).
 2. Runtime → Change runtime type → **GPU**.
 3. Hücreleri sırayla çalıştır.
+
+> Not: Ana eğitim akışı Jupyter'da da çalışır; ancak 14. bölümdeki "kendi görselini yükle" test hücresi `google.colab` kullandığı için Colab'a özeldir.
 
 ```bash
 pip install -r requirements.txt
